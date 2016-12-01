@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response;
 
 public interface SampleDataResource extends RestResource {
@@ -41,6 +42,10 @@ public interface SampleDataResource extends RestResource {
 
     @DELETE
     Response deleteExceptEssentialData();
+
+    @PUT
+    @Path("/allowAnonymousUser/{value}")
+    Response allowAnonymousUser(@PathParam("value") boolean value);
 
     /**
      * This dummy service can be used to simulate long running operation or throws exception.
